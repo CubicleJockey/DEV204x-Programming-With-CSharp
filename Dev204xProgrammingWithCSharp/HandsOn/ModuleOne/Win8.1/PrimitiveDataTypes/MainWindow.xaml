@@ -1,0 +1,47 @@
+﻿<Page
+    x:Class="PrimitiveDataTypes.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:PrimitiveDataTypes"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Disabled">
+        <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}" >
+            <Grid Margin="12,0,12,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="2*"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="10*"/>
+                </Grid.RowDefinitions>
+                <TextBlock Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center"  FontSize="40"  TextWrapping="Wrap" Text="Primitive Data Types" />
+                <Grid Margin="12,0,12,0" Grid.Row="2">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="2*"/>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="10*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Grid.Row="0" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="28" Text="Choose a data type" />
+                    <TextBlock Grid.Row="0" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center" TextWrapping="Wrap" FontSize="28" Text="Sample value" />
+                    <ListBox x:Name="type" Grid.Row="2" Grid.Column="0" HorizontalAlignment="Center" VerticalAlignment="Top" Width="150" FontSize="24" SelectionChanged="TypeSelectionChanged">
+                        <ListBoxItem>int</ListBoxItem>
+                        <ListBoxItem>long</ListBoxItem>
+                        <ListBoxItem>float</ListBoxItem>
+                        <ListBoxItem>double</ListBoxItem>
+                        <ListBoxItem>decimal</ListBoxItem>
+                        <ListBoxItem>string</ListBoxItem>
+                        <ListBoxItem>char</ListBoxItem>
+                        <ListBoxItem>bool</ListBoxItem>
+                    </ListBox>
+                    <TextBox x:Name="value" Grid.Row="2" Grid.Column="1" VerticalAlignment="Top" HorizontalAlignment="Center" TextWrapping="Wrap" FontSize="24" Width="150"/>
+                </Grid>
+            </Grid>
+        </Grid>
+    </ScrollViewer>
+</Page>
