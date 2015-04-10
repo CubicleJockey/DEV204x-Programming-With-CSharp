@@ -69,8 +69,6 @@ namespace Dev204xProgrammingWithCSharp
 
             #endregion Operators
 
-
-
             #region Expression
 
 
