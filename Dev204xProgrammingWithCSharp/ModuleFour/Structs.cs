@@ -28,9 +28,8 @@ namespace ModuleFour
                 Name = "Fourth Coffee Place",
                 CountryOfOrigin = "Indonesia",
                 Strength = 3,
-                Bean = "Mister"
+                Bean = "Mister" //Chuckle here at my terrible joke.
             };
-            //Chuckle here at my terrible joke.
 
             Console.WriteLine(coffee.ToString());
         }
