@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text;
 
 namespace ModuleThreeAssignment
 {
@@ -35,7 +36,7 @@ namespace ModuleThreeAssignment
 
         private static string universityDegreeLevel;
         private static string univeristyDegreeMajor;
-        private static short univerisityDegreeRequiredCredits;
+        private static short univerisityDegreeRequiredCredits = 0;
 
         #endregion Univeristy Degree Variables
 
@@ -52,6 +53,7 @@ namespace ModuleThreeAssignment
         private static string courseCode;
         private static string courseTitle;
         private static string courseDescription;
+        private static short courseCreditHours;
 
         #endregion A Course Variables
 
@@ -60,20 +62,27 @@ namespace ModuleThreeAssignment
         
         public static void Main(string[] args)
         {
+            /*
+             * I am not calling the Print/Display methods because this 
+             * goes against SOLID principles and is just bad practice.
+             * 
+             * Documentation: http://en.wikipedia.org/wiki/SOLID_%28object-oriented_design%29
+             * */
             try
             {
-                //Get information
                 GetStudentInfo();
-                GetProfessorInfo();
-                GetProgramInfo();
-                GetDegreeInfo();
-                GetCourseInfo();
-
-                //Display information
                 DisplayStudentDetails();
+                
+                GetProfessorInfo();
                 DisplayProfessorDetails();
+
+                GetProgramInfo();
                 DisplayProgramDetails();
+
+                GetDegreeInfo();
                 DisplayDegreeDetails();
+                
+                GetCourseInfo();
                 DisplayCourseDetails();
             }
             catch(Exception x)
@@ -148,7 +157,7 @@ namespace ModuleThreeAssignment
         private static void GetProfessorInfo()
         {
             Console.WriteLine("Professor Information Entry:");
-            Console.WriteLine("--------------------------");
+            Console.WriteLine("----------------------------");
             Console.WriteLine();
 
             Console.WriteLine("First Name: ");
@@ -250,13 +259,26 @@ namespace ModuleThreeAssignment
             univeristyDegreeMajor = Console.ReadLine();
             Console.WriteLine();
 
-            
-
+            Console.WriteLine("Credit Hours:");
+            short.TryParse(Console.ReadLine(), out univerisityDegreeRequiredCredits);
         }
 
         private static void GetCourseInfo()
         {
-            throw new NotImplementedException("Oh noes n' stuff!");
+            Console.WriteLine("Get Course Information Entry: ");
+            Console.WriteLine("------------------------------");
+            Console.WriteLine();
+
+            Console.WriteLine("Code:");
+            courseCode = Console.ReadLine();
+            Console.WriteLine();
+
+            Console.WriteLine("Title:");
+            courseTitle = Console.ReadLine();
+            Console.WriteLine();
+
+            Console.WriteLine("Credit Hours:");
+            short.TryParse(Console.ReadLine(), out courseCreditHours);
         }
 
         #endregion GetInfo Methods
@@ -266,28 +288,93 @@ namespace ModuleThreeAssignment
 
         private static void DisplayStudentDetails()
         {
-            throw new NotImplementedException("Oh noes n' stuff!");
+            /*
+             * I am using the built-in .NET library StringBuilder to expose
+             * whom ever grades my assignment to memory efficient ways to deal 
+             * with strings.
+             * 
+             * Documentation: https://msdn.microsoft.com/en-us/library/system.text.stringbuilder%28v=vs.110%29.aspx
+             */
+            var sb = new StringBuilder();
+            sb.AppendLine("Collected Student Information");
+            sb.AppendLine("-----------------------------");
+            sb.AppendFormat("First Name: {0}", studentFirstName).AppendLine();
+            sb.AppendFormat("Last Name: {0}", studentLastName).AppendLine();
+            sb.AppendFormat("Birthday: {0}", studentBirthday.ToShortDateString()).AppendLine();
+            sb.AppendFormat("Address: {0}", studentAddress).AppendLine();
+            sb.AppendFormat("Address1: {0}", studentAddress1).AppendLine();
+            sb.AppendFormat("City: {0}", studentCity).AppendLine();
+            sb.AppendFormat("State: {0}", studentState).AppendLine();
+            sb.AppendFormat("Country: {0}", studentCountry).AppendLine();
+            sb.AppendFormat("Notes: {0}", studentNotes).AppendLine();
+            sb.AppendLine();
+
+            Console.WriteLine(sb.ToString());
         }
 
 
         private static void DisplayProfessorDetails()
         {
-            throw new NotImplementedException("Oh noes n' stuff!");
+            var sb = new StringBuilder();
+            sb.AppendLine("Collected Professor Information");
+            sb.AppendLine("-------------------------------");
+            sb.AppendFormat("Prefix: {0}", professorPreFix).AppendLine();
+            sb.AppendFormat("First Name: {0}", professorFirstName).AppendLine();
+            sb.AppendFormat("Last Name: {0}", professorLastName).AppendLine();
+            sb.AppendFormat("Department: {0}", professorDepartment).AppendLine();
+            sb.AppendLine();
+
+            Console.WriteLine(sb.ToString());
         }
 
         private static void DisplayProgramDetails()
         {
-            throw new NotImplementedException("Oh noes n' stuff!");
+            var sb = new StringBuilder();
+
+            sb.AppendLine("Collected Program Information");
+            sb.AppendLine("-----------------------------");
+            sb.AppendFormat("Name: {0}", univserityProgramName).AppendLine();
+            sb.AppendFormat("Department Head: {0}", univeristyProgramDepartmentHead).AppendLine();
+            sb.AppendFormat("Degree's offered:").AppendLine();
+
+            foreach(var degree in universityDegreesOffered)
+            {
+                if(!string.IsNullOrWhiteSpace(degree))
+                {
+                    sb.AppendFormat("\t{0}", degree).AppendLine();
+                }
+            }
+            sb.AppendLine();
+
+            Console.WriteLine(sb.ToString());
         }
 
         private static void DisplayDegreeDetails()
         {
-            throw new NotImplementedException("Oh noes n' stuff!");
+            var sb = new StringBuilder();
+            sb.AppendLine("Collected Degree Information");
+            sb.AppendLine("----------------------------");
+            sb.AppendFormat("Level: {0}", universityDegreeLevel);
+            sb.AppendFormat("Major: {0}", univeristyDegreeMajor);
+            sb.AppendFormat("Credit Hours Required: {0}", univerisityDegreeRequiredCredits);
+            sb.AppendLine();
+
+            Console.WriteLine(sb.ToString());
         }
 
         private static void DisplayCourseDetails()
         {
-            throw new NotImplementedException("Oh noes n' stuff!");
+            var sb = new StringBuilder();
+
+            sb.AppendLine("Current Course");
+            sb.AppendLine("--------------");
+            sb.AppendFormat("Code: {0}", courseCode).AppendLine();
+            sb.AppendFormat("Title: {0}", courseTitle).AppendLine();
+            sb.AppendFormat("Credit Hours: {0}", courseCreditHours).AppendLine();
+            sb.AppendFormat("Description: {0}", courseDescription).AppendLine();
+            sb.AppendLine();
+
+            Console.WriteLine(sb.ToString());
         }
 
         #endregion DisplayInfo Methods
