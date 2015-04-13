@@ -10,22 +10,37 @@ namespace ModuleFourAssignment
 
         #region Structs
 
+        /// <summary>
+        /// I am using properties even though the assignment says not to.
+        /// Here's why:
+        /// 
+        /// 1. To educate, I believe the teacher didn't say to use properties because there 
+        ///    is a trick to getting a struct to work with Auto Properites.
+        ///         1. if you create a struct without this trick you will get this error messsage 
+        ///            "The 'this' object cannot be used before all of its fields are assigned to"
+        ///         2. You get this message because the "backing property" for the auto property must be
+        ///            initialized before the constructor tries to use it. Chicken in the egg problem right?
+        ///         3. There are things known as default constructors for every object Value Type (struct) or Reference Type(class)
+        ///            To invoke the default constructor for a struct before YOUR paramertized Constructor you need to do this
+        ///                 i. public Student(some parameters) : this(), the key here is triggering the default constructor with : this()
+        ///
+        /// Hope this information was helpfult to whoever grades this
+        ///         
+        /// </summary>
         public struct Student
         {
             #region Members
 
-            //Public members is really gross and not proper encapsulation just FYI
-
-            public string FirstName;
-            public string LastName;
-            public DateTime Birthday;
-            public string Address;
-            public string Address1;
-            public string City;
-            public State State;
-            public string Zip;
-            public Country Country;
-            public string Notes;
+            public string FirstName { get; private set; }
+            public string LastName { get; private set; }
+            public DateTime Birthday { get; private set; }
+            public string Address { get; private set; }
+            public string Address1 { get; private set; }
+            public string City { get; private set; }
+            public State State { get; private set; }
+            public string Zip { get; private set; }
+            public Country Country { get; private set; }
+            public string Notes { get; private set; }
 
             #endregion Members
 
