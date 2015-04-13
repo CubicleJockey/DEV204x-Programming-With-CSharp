@@ -6,56 +6,55 @@ namespace ModuleThreeAssignment
     {
         #region Fields
 
-
         #region Student Variables
 
-        private string studentFirstName;
-        private string studentLastName;
-        private DateTime studentBirthday;
-        private string studentAddress;
-        private string studentAddress1;
-        private string studentCity;
-        private string studentState;
-        private string studentZip;
-        private string studentCountry;
-        private string studentNotes;
+        private static string studentFirstName;
+        private static string studentLastName;
+        private static DateTime studentBirthday;
+        private static string studentAddress;
+        private static string studentAddress1;
+        private static string studentCity;
+        private static string studentState;
+        private static string studentZip;
+        private static string studentCountry;
+        private static string studentNotes;
 
 
         #endregion Student Variables
 
         #region Professor Variables
 
-        private string professorPreFix;
-        private string professorFirstName;
-        private string professorLastName;
-        private string professorDepartment;
+        private static string professorPreFix;
+        private static string professorFirstName;
+        private static string professorLastName;
+        private static string professorDepartment;
 
         #endregion Professor Variables
 
         #region University Degree Variables
 
-        private string universityDegreeLevel;
-        private string univeristyDegreeMajor;
-        private short univerisityDegreeRequiredCredits;
+        private static string universityDegreeLevel;
+        private static string univeristyDegreeMajor;
+        private static short univerisityDegreeRequiredCredits;
 
         #endregion Univeristy Degree Variables
 
         #region University Program Variables
 
-        private string univserityProgramName;
+        private static string univserityProgramName;
 
         //Doing this as array to give a preview
-        private string[] universityDegreesOffered;
+        private static string[] universityDegreesOffered;
 
-        private string univeristyProgramDepartmentHead;
+        private static string univeristyProgramDepartmentHead;
 
         #endregion University Program Variables
 
         #region A Course Variables
 
-        private string courseCode;
-        private string courseTitle;
-        private string courseDescription;
+        private static string courseCode;
+        private static string courseTitle;
+        private static string courseDescription;
 
         #endregion A Course Variables
 
@@ -64,19 +63,30 @@ namespace ModuleThreeAssignment
         
         public static void Main(string[] args)
         {
-            //Get information
-            GetStudentInfo();
-            GetProfessorInfo();
-            GetProgramInfo();
-            GetDegreeInfo();
-            GetCourseInfo();
+            try
+            {
+                //Get information
+                GetStudentInfo();
+                GetProfessorInfo();
+                GetProgramInfo();
+                GetDegreeInfo();
+                GetCourseInfo();
 
-            //Display information
-            DisplayStudentDetails();
-            DisplayProfessorDetails();
-            DisplayProgramDetails();
-            DisplayDegreeDetails();
-            DisplayCourseDetails();
+                //Display information
+                DisplayStudentDetails();
+                DisplayProfessorDetails();
+                DisplayProgramDetails();
+                DisplayDegreeDetails();
+                DisplayCourseDetails();
+            }
+            catch(Exception x)
+            {
+                Console.WriteLine(x.Message);
+
+                Console.WriteLine("Please restart application.");
+                Console.WriteLine("Press any key to close.");
+                Console.ReadLine();
+            }
         }
 
         #region Helper Methods
@@ -85,7 +95,45 @@ namespace ModuleThreeAssignment
 
         private static void GetStudentInfo()
         {
-            throw new NotImplementedException("Oh noes n' stuff!");
+            Console.WriteLine("Student Information Entry:");
+            Console.WriteLine("--------------------------");
+            Console.WriteLine("First Name: ");
+            studentFirstName = Console.ReadLine();
+
+            Console.WriteLine("Last Name: ");
+            studentLastName = Console.ReadLine();
+
+            Console.WriteLine("Birthday (dd/mm/yyyy or dd.mm.yyyy): ");
+            try
+            {
+                studentBirthday = DateTime.Parse(Console.ReadLine());
+            }
+            catch(FormatException fx)
+            {
+                Console.WriteLine(fx.Message);
+                throw;
+            }
+
+            Console.WriteLine("Address: ");
+            studentAddress = Console.ReadLine();
+            
+            Console.WriteLine("Address1: ");
+            studentAddress1 = Console.ReadLine();
+
+            Console.WriteLine("City: ");
+            studentCity = Console.ReadLine();
+            
+            Console.WriteLine("State: ");
+            studentState = Console.ReadLine();
+
+            Console.WriteLine("Zip: ");
+            studentZip = Console.ReadLine();
+
+            Console.WriteLine("Country: ");
+            studentCountry = Console.ReadLine();
+
+            Console.WriteLine("Notes: ");
+            studentNotes = Console.ReadLine();
         }
 
         private static void GetProfessorInfo()
