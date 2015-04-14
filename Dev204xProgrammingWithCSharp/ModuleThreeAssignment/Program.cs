@@ -36,6 +36,8 @@ namespace ModuleThreeAssignment
 
         private static string universityDegreeLevel;
         private static string univeristyDegreeMajor;
+
+        //Shorts Max value is 32767 never heard of a degree program going higher than this EVER
         private static short univerisityDegreeRequiredCredits = 0;
 
         #endregion Univeristy Degree Variables
