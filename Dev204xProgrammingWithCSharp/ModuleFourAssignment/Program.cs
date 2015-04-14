@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Text;
 
@@ -18,19 +17,33 @@ namespace ModuleFourAssignment
             //Inistalize Array
             Student[] students = new Student[5];
 
-            //Set structs
-            students[0] = new Student("Andre", "Davis", new DateTime(1982, 11, 11),
-                                        "1234 Awesome Lane", string.Empty, "Seattle", 
-                                        State.WA, "98102-1234", Country.USA, "Cubicle Jockey",
-                new UniversityDegree(DegreeLevel.Doctorate, "Permaculture Design", 270),
-                new UniversityProgram("Whole Systems Design", 
+
+            UniversityDegree degree = new UniversityDegree(DegreeLevel.Doctorate, "Permaculture Design", 270);
+            UniversityProgram program = new UniversityProgram("Whole Systems Design", 
                                        new[] {DegreeLevel.Masters, DegreeLevel.Doctorate},
-                                       new Professor("Dr.", "Paul", "Statmen", "Permaculture")),
-                new Course("PD450", 
-                           "Permaculture Applied to City Rooftops",
-                           "Use permaculture principles to bring sustaibility to city roof tops", 5,
-                           new Professor("Dr.", "David", "Holmgren", "Permaculture"))
-                );
+                                       new Professor("Dr.", "Paul", "Statmen", "Permaculture"));
+            Professor professor = new Professor("Dr.", "David", "Holmgren", "Permaculture");
+            Course course =  new Course("PD450",
+                                        "Permaculture Applied to City Rooftops",
+                                        "Use permaculture principles to bring sustaibility to city roof tops", 
+                                        5, 
+                                        professor);
+               
+
+            //Set structs
+            students[0] = new Student("Andre", 
+                                      "Davis", 
+                                      new DateTime(1982, 11, 11),
+                                      "1234 Awesome Lane", 
+                                      string.Empty, 
+                                      "Seattle", 
+                                      State.WA, 
+                                      "98102-1234", 
+                                      Country.USA, 
+                                      "Cubicle Jockey",
+                                      degree, 
+                                      program, 
+                                      course);
 
             //Allowed to be empty via assignment instructions
             students[1] = new Student();

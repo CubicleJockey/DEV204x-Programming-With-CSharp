@@ -65,8 +65,9 @@ namespace ModuleThreeAssignment
         public static void Main(string[] args)
         {
             /*
-             * I am not calling the Print/Display methods because this 
-             * goes against SOLID principles and is just bad practice.
+             * I am not calling the Print/Display methods inside of the get methods 
+             * because this goes against SOLID principles (Single Responisbility) and is 
+             * just bad practice.
              * 
              * Documentation: http://en.wikipedia.org/wiki/SOLID_%28object-oriented_design%29
              * */
