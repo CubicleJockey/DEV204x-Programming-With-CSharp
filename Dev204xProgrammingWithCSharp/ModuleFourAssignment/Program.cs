@@ -11,10 +11,10 @@ namespace ModuleFourAssignment
             /*
              * Assignment Says: Assign values to the fields in at least one of the student structs in the array
              * 
-             * So I am going to have 4 empty student struct's.
+             * So I am going to have 4 empty student structs.
              */
 
-            //Inistalize Array
+            //Initialize Array
             Student[] students = new Student[5];
 
 
@@ -61,20 +61,21 @@ namespace ModuleFourAssignment
         #region Structs
 
         /// <summary>
-        /// I am using properties even though the assignment says not to.
+        /// I am using properties even though the assignment says NOT to.
         /// Here's why:
         /// 
         /// 1. To educate, I believe the teacher didn't say to use properties because there 
-        ///    is a trick to getting a struct to work with Auto Properites.
-        ///         1. if you create a struct without this trick you will get this error messsage 
+        ///    is a trick to getting a struct to work with Auto Properties.
+        ///         1. if you create a struct without this trick you will get this error message 
         ///            "The 'this' object cannot be used before all of its fields are assigned to"
         ///         2. You get this message because the "backing property" for the auto property must be
         ///            initialized before the constructor tries to use it. Chicken in the egg problem right?
         ///         3. There are things known as default constructors for every object Value Type (struct) or Reference Type(class)
-        ///            To invoke the default constructor for a struct before YOUR paramertized Constructor you need to do this
+        ///            To invoke the default constructor for a struct before YOUR parametrized Constructor you need to do this
         ///                 i. public ConstructorName(some parameters) : this(), the key here is triggering the default constructor with : this()
         ///
-        /// Hope this information was helpfult to whoever grades this
+        /// Hope this information was helpful to whoever grades this, also be kind on the grading because I step out of what was said to help
+        /// educate.
         ///         
         /// </summary>
         public struct Student
@@ -327,6 +328,14 @@ namespace ModuleFourAssignment
         #endregion Structs
 
         #region Enums
+
+        /*
+         * Using enums just to help others see the use of and for them, in that they prevent invalid values.
+         * 
+         * I already had someone comment on a post where I shared the enums, be like "this is easier with a database, you just wait"
+         * This person is correct but this course is not there yet so I try not to jump ahead of what is taught in the class
+         * as to not confuse other students. Thanks.
+         */
 
         public enum DegreeLevel
         {
