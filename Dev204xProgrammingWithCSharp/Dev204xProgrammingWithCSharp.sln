@@ -28,8 +28,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleFourAssignment", "Mod
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleThreeAssignment", "ModuleThreeAssignment\ModuleThreeAssignment.csproj", "{7F50FC9B-5FC4-4D5D-B4D1-3426D1DEDDDD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleApplication2", "ConsoleApplication2\ConsoleApplication2.csproj", "{901EE0B8-1B3F-4BBF-BA2B-05AD88ADC612}"
-EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -122,16 +120,6 @@ Global
 		{7F50FC9B-5FC4-4D5D-B4D1-3426D1DEDDDD}.Release|ARM.ActiveCfg = Release|Any CPU
 		{7F50FC9B-5FC4-4D5D-B4D1-3426D1DEDDDD}.Release|x64.ActiveCfg = Release|Any CPU
 		{7F50FC9B-5FC4-4D5D-B4D1-3426D1DEDDDD}.Release|x86.ActiveCfg = Release|Any CPU
-		{901EE0B8-1B3F-4BBF-BA2B-05AD88ADC612}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{901EE0B8-1B3F-4BBF-BA2B-05AD88ADC612}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{901EE0B8-1B3F-4BBF-BA2B-05AD88ADC612}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{901EE0B8-1B3F-4BBF-BA2B-05AD88ADC612}.Debug|x64.ActiveCfg = Debug|Any CPU
-		{901EE0B8-1B3F-4BBF-BA2B-05AD88ADC612}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{901EE0B8-1B3F-4BBF-BA2B-05AD88ADC612}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{901EE0B8-1B3F-4BBF-BA2B-05AD88ADC612}.Release|Any CPU.Build.0 = Release|Any CPU
-		{901EE0B8-1B3F-4BBF-BA2B-05AD88ADC612}.Release|ARM.ActiveCfg = Release|Any CPU
-		{901EE0B8-1B3F-4BBF-BA2B-05AD88ADC612}.Release|x64.ActiveCfg = Release|Any CPU
-		{901EE0B8-1B3F-4BBF-BA2B-05AD88ADC612}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
