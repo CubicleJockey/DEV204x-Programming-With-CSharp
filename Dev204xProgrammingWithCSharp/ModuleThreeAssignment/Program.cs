@@ -116,7 +116,7 @@ namespace ModuleThreeAssignment
             studentLastName = Console.ReadLine();
             Console.WriteLine();
 
-            Console.WriteLine("Birthday (dd/mm/yyyy or dd.mm.yyyy): ");
+            Console.WriteLine("Birthday [Formats- mm.dd.yyyy | mm/dd/yyyy)]: ");
             try
             {
                 studentBirthday = DateTime.Parse(Console.ReadLine());
