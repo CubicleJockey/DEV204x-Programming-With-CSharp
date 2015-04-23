@@ -24,7 +24,7 @@ public void Main(string[] args)
 	
 	sb.AppendFormat("The {0} program contains the {1} of {2} degree", program.Name, program.Degree.Level, program.Degree.Major).AppendLine();
 	sb.AppendLine();
-	sb.AppendFormat("The {0} of {1} contains the course {2}", program.Degree.Level, program.Degree.Major, program.Degree.Course.Title).AppendLine();
+	sb.AppendFormat("The {0} of {1} degree contains the course {2}", program.Degree.Level, program.Degree.Major, program.Degree.Course.Title).AppendLine();
 	sb.AppendLine();
 	sb.AppendFormat("The {0} course contains {1} student(s)", program.Degree.Course.Title, Student.NumberOfStudents).AppendLine();
 	

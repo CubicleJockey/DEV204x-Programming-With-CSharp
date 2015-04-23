@@ -200,6 +200,12 @@ namespace Module5Assignment.TurnInVersion
             }
         }
 
+        /*
+         * If you would like to see the version of this assignment with the classes
+         * in their own files visit my repository at:
+         * https://github.com/CubicleJockey/DEV204x-Programming-With-CSharp/tree/master/Dev204xProgrammingWithCSharp/Module5Assignment
+         */
+
         #endregion University Objects
     }
 }
