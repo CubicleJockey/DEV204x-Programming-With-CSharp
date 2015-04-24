@@ -64,6 +64,7 @@
   <ItemGroup />
   <ItemGroup>
     <None Include="Notes\AbstractClasses.docx" />
+    <None Include="Notes\GarbageCollection.docx" />
     <None Include="Notes\Inheritance.docx" />
     <None Include="Notes\Interfaces.docx" />
     <None Include="Notes\SealedClasses.docx" />
