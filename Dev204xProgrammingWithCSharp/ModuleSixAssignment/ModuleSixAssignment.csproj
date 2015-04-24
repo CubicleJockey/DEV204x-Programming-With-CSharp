@@ -43,10 +43,23 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TurnInVersion\Assignment6TurningIn.cs" />
+    <Compile Include="University\Course.cs" />
+    <Compile Include="University\Degree.cs" />
+    <Compile Include="University\Person.cs" />
+    <Compile Include="University\Program.cs" />
+    <Compile Include="University\Student.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="University\Teacher.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="Instructions.docx" />
+    <None Include="TurnInVersion\LingPadVersion.linq" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="TurnInVersion\ModuleSixScreen.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
