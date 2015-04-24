@@ -111,7 +111,7 @@ namespace ModuleOneAssignment
             #endregion Display to Console
 
             Console.WriteLine("Press any key to exit.");
-            Console.ReadLine();
+            Console.ReadKey();
         }
     }
 }

@@ -1,50 +1,62 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 
-namespace Module5Assignment.TurnInVersion
+namespace Test
 {
-    public class Program
+    class Program
     {
-        public void Main(string[] args)
+        public static void Main(string[] args)
         {
-            /* 
-	        * Since we don't need to display student information
-	        * I am using empty values.
-	        */
-            Student student1 = new Student(string.Empty, string.Empty, DateTime.Now, string.Empty, string.Empty,
-                string.Empty, string.Empty, string.Empty, string.Empty, string.Empty);
-            Student student2 = new Student(string.Empty, string.Empty, DateTime.Now, string.Empty, string.Empty,
-                string.Empty, string.Empty, string.Empty, string.Empty, string.Empty);
-            Student student3 = new Student(string.Empty, string.Empty, DateTime.Now, string.Empty, string.Empty,
-                string.Empty, string.Empty, string.Empty, string.Empty, string.Empty);
+            /*Leaving some fields with empty values to ease of assignment*/
+            Student student1 = new Student("Carlo", "Poppa", DateTime.Now, string.Empty, string.Empty, string.Empty,
+            string.Empty, string.Empty, string.Empty, string.Empty);
+            Student student2 = new Student("Super", "Commuter", DateTime.Now, string.Empty, string.Empty, string.Empty,
+            string.Empty, string.Empty, string.Empty, string.Empty);
+            Student student3 = new Student("Kellee", "Maze", DateTime.Now, string.Empty, string.Empty, string.Empty,
+            string.Empty, string.Empty, string.Empty, string.Empty);
 
-            /*Don't need to display data using empty values*/
-            Teacher teacher = new Teacher(string.Empty, string.Empty, string.Empty, string.Empty);
+            /*Using some empty values for simplicity shake*/
+            Teacher teacher = new Teacher("Dr.", "Madu", "Rao", DateTime.Now, string.Empty, string.Empty, string.Empty,
+            string.Empty, string.Empty, string.Empty, "Information Technology");
 
             Course course = new Course("Dev204x", "Programming with C#", "Programming", 5, teacher,
-                new[] {student1, student2, student3});
+            new[] { student1, student2, student3 });
             Degree degree = new Degree("Bachelor", "Computer Science", 400, course);
-            UProgram program = new UProgram("Information Technology", new[] {"Bachelor", "Masters"}, teacher, degree);
+            UProgram program = new UProgram("Information Technology", new[] { "Bachelor", "Masters" }, teacher, degree);
 
             var sb = new StringBuilder();
 
             sb.AppendFormat("The {0} program contains the {1} of {2} degree", program.Name, program.Degree.Level,
-                program.Degree.Major).AppendLine();
+            program.Degree.Major).AppendLine();
             sb.AppendLine();
-            sb.AppendFormat("The {0} of {1} contains the course {2}", program.Degree.Level, program.Degree.Major,
-                program.Degree.Course.Title).AppendLine();
+            sb.AppendFormat("The {0} of {1} degree contains the course {2}", program.Degree.Level, program.Degree.Major,
+            program.Degree.Course.Title).AppendLine();
             sb.AppendLine();
-            sb.AppendFormat("The {0} course contains {1} student(s)", program.Degree.Course.Title, Student.NumberOfStudents)
-                .AppendLine();
+            sb.AppendFormat("Teacher: {0} {1} {2}", program.Degree.Course.Teacher.PreFix,
+            program.Degree.Course.Teacher.FirstName,
+            program.Degree.Course.Teacher.LastName).AppendLine();
+            sb.AppendLine();
+            sb.AppendFormat("The {0} course contains {1} student(s)", program.Degree.Course.Title,
+            Student.NumberOfStudents).AppendLine();
+            sb.AppendLine();
+            sb.AppendLine(program.Degree.Course.Teacher.GiveTest());
+            sb.AppendLine();
+            sb.AppendLine("\tStudents: ");
+            foreach (var student in program.Degree.Course.Students)
+            {
+                sb.AppendFormat("\t {0}, {1} - They took a test: {2}", student.FirstName, student.LastName,
+                student.TakeTest()).AppendLine();
+            }
 
             Console.WriteLine(sb.ToString());
             Console.WriteLine("Press any key to continue...");
             Console.ReadKey();
         }
 
-
-        #region Univeristy Objects
+        #region Classes
 
         public class Course
         {
@@ -69,7 +81,7 @@ namespace Module5Assignment.TurnInVersion
             #endregion Properties
 
             public Course(string code, string title, string description, short creditHours, Teacher teacher,
-                IEnumerable<Student> students)
+            IEnumerable<Student> students)
             {
                 Code = code;
                 Title = title;
@@ -96,11 +108,11 @@ namespace Module5Assignment.TurnInVersion
             #endregion Properties
 
             /*
-	* The Program object should be able to contain degrees and the degrees should be 
-	* able to contain courses as well but for the purposes of this assignment, 
-	* just ensure you have a single variable in UProgram to hold a Degree and 
-	* single variable in Degree to hold a Course.  
-	*/
+* The Program object should be able to contain degrees and the degrees should be 
+* able to contain courses as well but for the purposes of this assignment, 
+* just ensure you have a single variable in UProgram to hold a Degree and 
+* single variable in Degree to hold a Course. 
+*/
 
             public Degree(string level, string major, short requiredCredits, Course course)
             {
@@ -138,9 +150,11 @@ namespace Module5Assignment.TurnInVersion
             }
         }
 
-        public class Student
+        public class Student : Person
         {
-            #region Static 
+            private static readonly Random _random = new Random();
+
+            #region Static
 
             //I disagree with this, if you have an array of students
             //you can just use length, this is sloppy
@@ -150,21 +164,15 @@ namespace Module5Assignment.TurnInVersion
 
             #region Properties
 
-            public string FirstName { get; private set; }
-            public string LastName { get; private set; }
-            public DateTime Birthday { get; private set; }
-            public string Address { get; private set; }
-            public string Address1 { get; private set; }
-            public string City { get; private set; }
-            public string State { get; private set; }
-            public string Zip { get; private set; }
-            public string Country { get; private set; }
+            public string Notes { get; private set; }
 
             #endregion Properties
 
             public Student(string fName, string lName, DateTime bDay, string address, string address1,
-                string city, string state, string zip, string country, string notes)
+            string city, string state, string zip, string country, string notes)
             {
+                #region Set Inherited Properties
+
                 FirstName = fName;
                 LastName = lName;
                 Birthday = bDay;
@@ -175,37 +183,69 @@ namespace Module5Assignment.TurnInVersion
                 Zip = zip;
                 Country = country;
 
+                #endregion Set Inherited Properties
+
+                Notes = notes;
+
                 NumberOfStudents++;
+            }
+
+            public bool TakeTest()
+            {
+                return (_random.Next(2) % 2) == 0;
             }
         }
 
-        public class Teacher
+        public class Teacher : Person
         {
             #region Properties
 
             public string PreFix { get; private set; }
-            public string FirstName { get; private set; }
-            public string LastName { get; private set; }
 
             public string Department { get; private set; }
 
             #endregion Properties
 
-            public Teacher(string prefix, string firstName, string lastName, string department)
+            public Teacher(string prefix, string fName, string lName, DateTime bDay, string address, string address1,
+            string city, string state, string zip, string country, string department)
             {
                 PreFix = prefix;
-                FirstName = firstName;
-                LastName = lastName;
                 Department = department;
+
+                #region Set Inherited Properties
+
+                FirstName = fName;
+                LastName = lName;
+                Birthday = bDay;
+                Address = address;
+                Address1 = address1;
+                City = city;
+                State = state;
+                Zip = zip;
+                Country = country;
+
+                #endregion Set Inherited Properties
+            }
+
+            public string GiveTest()
+            {
+                return string.Format("Teacher {0} gave test.", LastName);
             }
         }
 
-        /*
-         * If you would like to see the version of this assignment with the classes
-         * in their own files visit my repository at:
-         * https://github.com/CubicleJockey/DEV204x-Programming-With-CSharp/tree/master/Dev204xProgrammingWithCSharp/Module5Assignment
-         */
+        public abstract class Person
+        {
+            public string FirstName { get; protected set; }
+            public string LastName { get; protected set; }
+            public DateTime Birthday { get; protected set; }
+            public string Address { get; protected set; }
+            public string Address1 { get; protected set; }
+            public string City { get; protected set; }
+            public string State { get; protected set; }
+            public string Zip { get; protected set; }
+            public string Country { get; protected set; }
+        }
 
-        #endregion University Objects
+        #endregion Classes
     }
 }

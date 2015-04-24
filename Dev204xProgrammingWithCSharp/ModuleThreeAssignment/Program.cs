@@ -94,7 +94,7 @@ namespace ModuleThreeAssignment
 
                 Console.WriteLine("Please restart application.");
                 Console.WriteLine("Press any key to close.");
-                Console.ReadLine();
+                Console.ReadKey();
             }
         }
 

@@ -55,7 +55,7 @@ namespace ModuleFourAssignment
             //Display populated Student struct object.
             Console.WriteLine(students[0]);
             Console.WriteLine("Press ANY key to exit.");
-            Console.ReadLine();
+            Console.ReadKey();
         }
 
         #region Structs

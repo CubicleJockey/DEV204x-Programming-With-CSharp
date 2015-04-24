@@ -44,7 +44,7 @@ namespace ModuleSixAssignment
 
             Console.WriteLine(sb.ToString());
             Console.WriteLine("Press any key to continue...");
-            Console.ReadLine();
+            Console.ReadKey();
         }
     }
 }
