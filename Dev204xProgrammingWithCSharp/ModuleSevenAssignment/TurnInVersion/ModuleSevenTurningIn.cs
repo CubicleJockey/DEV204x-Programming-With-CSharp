@@ -5,6 +5,7 @@ namespace ModuleSevenAssignment.TurnInVersion
 {
     public class Program
     {
+        //Add static before copying into forum
         public void Main(string[] args)
         {
             /*Leaving some fields with empty values to ease of assignment*/

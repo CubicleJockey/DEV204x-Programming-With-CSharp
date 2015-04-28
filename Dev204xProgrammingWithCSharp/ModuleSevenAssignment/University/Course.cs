@@ -17,10 +17,9 @@ namespace ModuleSevenAssignment.University
 
         public Teacher Teacher { get; private set; }
 
-        //IEnumerable<T> is the interface that Arrays and List<T> inherit from
-        //This allows an array, a List<T> or any other item that inherits from
-        //IEnumerable<T> to be passed to this property.
-        //Documentation: https://msdn.microsoft.com/en-us/library/9eekhta0%28v=vs.110%29.aspx
+        //ArrayList inherits from IEnumerable using lowest interface
+        //Documentation: https://msdn.microsoft.com/en-us/library/system.collections.ienumerable%28v=vs.110%29.aspx
+        //An actual ArrayList is passed in at time of contruction.
         public IEnumerable Students { get; private set; } 
 
         #endregion Properties
