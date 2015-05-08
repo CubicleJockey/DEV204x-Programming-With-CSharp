@@ -26,7 +26,7 @@ namespace Mod_9_Homework
                 City = txtCity.Text
             });
 
-            _index = _students.Count;
+            _index = (_students.Count - 1);
 
             MessageBox.Show("Student Saved!");
 
