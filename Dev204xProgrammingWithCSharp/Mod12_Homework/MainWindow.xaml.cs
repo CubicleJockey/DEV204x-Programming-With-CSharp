@@ -1,19 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Diagnostics;
 using System.IO;
+using System.Threading.Tasks;
+using System.Windows;
 
 namespace Mod12_Homework
 {
@@ -37,29 +27,29 @@ namespace Mod12_Homework
             ReadFile();
         }
 
-        public void WriteFile()
+        public async void WriteFile()
         {
-            string filePath = @"SampleFile.txt";
-            string text = txtContents.Text;
+            const string filePath = @"SampleFile.txt";
+            var text = txtContents.Text;
 
-            WriteText(filePath, text);
+            await WriteText(filePath, text);
         }
 
-        private void WriteText(string filePath, string text)
+        private static async Task WriteText(string filePath, string text)
         {
-            byte[] encodedText = Encoding.Unicode.GetBytes(text);
+            var encodedText = Encoding.Unicode.GetBytes(text);
 
-            using (FileStream sourceStream = new FileStream(filePath,
+            using (var sourceStream = new FileStream(filePath,
                 FileMode.Append, FileAccess.Write, FileShare.None,
-                bufferSize: 4096))
+                4096, FileOptions.Asynchronous))
             {
-                sourceStream.Write(encodedText, 0, encodedText.Length);
-            };
+                await sourceStream.WriteAsync(encodedText, 0, encodedText.Length);
+            }
         }
 
-        public void ReadFile()
+        public async void ReadFile()
         {
-            string filePath = @"SampleFile.txt";
+            const string filePath = @"SampleFile.txt";
 
             if (File.Exists(filePath) == false)
             {
@@ -69,7 +59,7 @@ namespace Mod12_Homework
             {
                 try
                 {
-                    string text = ReadText(filePath);
+                    var text = await ReadText(filePath);
                     txtContents.Text = text;
                 }
                 catch (Exception ex)
@@ -79,19 +69,19 @@ namespace Mod12_Homework
             }
         }
 
-        private string ReadText(string filePath)
+        private async static Task<string> ReadText(string filePath)
         {
-            using (FileStream sourceStream = new FileStream(filePath,
+            using (var sourceStream = new FileStream(filePath,
                 FileMode.Open, FileAccess.Read, FileShare.Read,
-                bufferSize: 4096))
+                4096, FileOptions.Asynchronous))
             {
                 StringBuilder sb = new StringBuilder();
 
                 byte[] buffer = new byte[0x1000];
-                int numRead;
-                while ((numRead = sourceStream.Read(buffer, 0, buffer.Length)) != 0)
+                Task<int> numRead;
+                while (await (numRead = sourceStream.ReadAsync(buffer, 0, buffer.Length)) != 0)
                 {
-                    string text = Encoding.Unicode.GetString(buffer, 0, numRead);
+                    var text = Encoding.Unicode.GetString(buffer, 0, numRead.Result);
                     sb.Append(text);
                 }
 
